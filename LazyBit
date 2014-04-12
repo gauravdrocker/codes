@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+#define MAXN 100005
+struct BIT
+{
+	ll data[MAXN];
+	void update(int idx,ll val)
+	{
+		while(idx<MAXN)
+		{
+			data[idx]+=val;
+			idx+= idx & -idx;
+		}	
+	}
+	void update(int l,int r,ll val)
+	{
+		update(l,val);
+		update(r+1,-val);
+	}
+	ll query(int idx)
+	{
+		ll res=0;
+		while(idx>0)
+		{
+			res+=data[idx];
+			idx-=idx&-idx;
+		}
+		return res;
+	}
+	ll query(int l,int r)
+	{
+		return (query(r)-query(l));
+	}
+};
+struct LazyBIT
+{
+	BIT bitAdd,bitSub;
+	void init()
+	{
+		memset(bitAdd.data,0,sizeof(bitAdd.data));
+		memset(bitSub.data,0,sizeof(bitSub.data));
+	}
+	void update(int l,int r,ll val)
+	{
+		bitAdd.update(l,r,val);
+		bitSub.update(l,r,(l-1)*val);
+		bitSub.update(r+1,(-r+l-1)*val);
+	}
+	ll query(int idx)
+	{
+		return idx*bitAdd.query(idx)-bitSub.query(idx);
+	}
+	ll query(int l,int r)
+	{
+		return query(r)-query(l-1);
+	}
+}tree;
