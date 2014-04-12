@@ -1,0 +1,77 @@
+#include <iostream>
+#include <cstring>
+#include <string>
+#include <cstdio>
+#include <fstream>
+#include <cstdlib>
+#include <vector>
+#include <algorithm>
+#include <stack>
+#include <map>
+#include <math.h>
+#include <ctime>
+
+// STL
+#define pb push_back
+#define LL long long
+#define ULL unsigned long long
+#define L long
+#define VCTP vector<pair<LL,LL> >
+#define PII pair<LL,LL>
+#define PDD pair<double,double>
+#define ft first
+#define sd second
+#define mp make_pair
+
+// Useful constants
+#define INF                         (int)1e9
+#define EPS                         1e-9
+
+// Useful hardware instructions
+#define bitcount                    __builtin_popcount
+#define gcd                         __gcd
+
+// Useful container manipulation / traversal macros
+#define forall(i,a,b)               for(int i=a;i<b;i++)
+#define foreach(v, c)               for( typeof( (c).begin()) v = (c).begin();  v != (c).end(); ++v)
+#define all(a)                      a.begin(), a.end()
+#define in(a,b)                     ( (b).find(a) != (b).end())
+#define pb                          push_back
+#define fill(a,v)                    memset(a, v, sizeof a)
+#define sz(a)                       ((int)(a.size()))
+#define mp                          make_pair
+
+// Some common useful functions
+#define maX(a,b)                     ( (a) > (b) ? (a) : (b))
+#define miN(a,b)                     ( (a) < (b) ? (a) : (b))
+#define checkbit(n,b)                ( (n >> b) & 1)
+#define INDEX(arr,ind)               (lower_bound(all(arr),ind)-arr.begin())
+using namespace std;
+typedef long long ll;
+int m=1000000009;
+ll int po(ll int a,ll int b,ll int MOD) {
+long long int x = 1, y = a;
+    while(b > 0) {
+        if(b%2 == 1) {
+            x=(x*y);
+            if(x>MOD) x%=MOD;
+        }
+        y = (y*y);
+        if(y>MOD) y%=MOD;
+        b /= 2;
+    }
+    return x;
+}
+
+#define gc getchar_unlocked
+#define rd readInt()
+inline long long readInt()
+{
+	long long n = 0, c = gc(), f = 1;
+	while(c != '-' && (c < '0' || c > '9')) c = gc();
+	if(c == '-') f = -1, c = gc();
+	while(c >= '0' && c <= '9')
+	n = (n<<3) + (n<<1) + c - '0', c = gc();
+	return n * f;
+}
+
