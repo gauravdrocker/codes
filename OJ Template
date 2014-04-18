@@ -49,8 +49,8 @@
 using namespace std;
 typedef long long ll;
 int m=1000000009;
-ll int po(ll int a,ll int b,ll int MOD) {
-long long int x = 1, y = a;
+ll po(ll a,ll b,ll MOD) {
+ll x = 1, y = a;
     while(b > 0) {
         if(b%2 == 1) {
             x=(x*y);
@@ -74,4 +74,13 @@ inline long long readInt()
 	n = (n<<3) + (n<<1) + c - '0', c = gc();
 	return n * f;
 }
-
+int main()
+{
+	int t;
+	t=rd;
+	while(t--)
+	{
+		
+	}
+	return 0;
+}
