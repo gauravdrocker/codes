@@ -1,0 +1,148 @@
+#include <iostream>
+#include <cstring>
+#include <string>
+#include <cstdio>
+#include <fstream>
+#include <cstdlib>
+#include <vector>
+#include <algorithm>
+#include <stack>
+#include <map>
+#include <math.h>
+#include <ctime>
+
+// STL
+#define pb push_back
+#define LL long long
+#define ULL unsigned long long
+#define L long
+#define VCTP vector<pair<LL,LL> >
+#define PII pair<LL,LL>
+#define PDD pair<double,double>
+#define ft first
+#define sd second
+#define mp make_pair
+
+// Useful constants
+#define INF                         (int)1e9
+#define EPS                         1e-9
+
+// Useful hardware instructions
+#define bitcount                    __builtin_popcount
+#define gcd                         __gcd
+
+// Useful container manipulation / traversal macros
+#define forall(i,a,b)               for(int i=a;i<b;i++)
+#define foreach(v, c)               for( typeof( (c).begin()) v = (c).begin();  v != (c).end(); ++v)
+#define all(a)                      a.begin(), a.end()
+#define in(a,b)                     ( (b).find(a) != (b).end())
+#define pb                          push_back
+#define fill(a,v)                    memset(a, v, sizeof a)
+#define sz(a)                       ((int)(a.size()))
+#define mp                          make_pair
+
+// Some common useful functions
+#define maX(a,b)                     ( (a) > (b) ? (a) : (b))
+#define miN(a,b)                     ( (a) < (b) ? (a) : (b))
+#define checkbit(n,b)                ( (n >> b) & 1)
+#define INDEX(arr,ind)               (lower_bound(all(arr),ind)-arr.begin())
+#define swap(a,b)		     ( a=(a+b)-(b=a) )
+using namespace std;
+typedef long long ll;
+int m=1000000009;
+ll po(ll a,ll b,ll MOD) {
+ll x = 1, y = a;
+    while(b > 0) {
+        if(b%2 == 1) {
+            x=(x*y);
+            if(x>MOD) x%=MOD;
+        }
+        y = (y*y);
+        if(y>MOD) y%=MOD;
+        b /= 2;
+    }
+    return x;
+}
+
+#define gc getchar_unlocked
+#define rd readInt()
+inline long long readInt()
+{
+	long long n = 0, c = gc(), f = 1;
+	while(c != '-' && (c < '0' || c > '9')) c = gc();
+	if(c == '-') f = -1, c = gc();
+	while(c >= '0' && c <= '9')
+	n = (n<<3) + (n<<1) + c - '0', c = gc();
+	return n * f;
+}
+#define MAXS 100005
+#define pa(i) (i>>1)
+#define le(i) (i<<1|1)
+#define ri(i) ((i<<1)+2)
+class minheap
+{
+	vector<int> heap;
+	public:
+	void ins(int k)
+	{
+		heap.pb(k);
+	}
+	minheap()
+	{}
+	minheap(int s)
+	{
+		heap.resize(s);		
+	}
+	void heapify(int i)
+	{
+		while(i<heap.size())
+		{
+			int min;
+			if(le(i)<heap.size()&&heap[le(i)]<heap[i])
+				min=le(i);
+			else
+				min=i;
+			if(ri(i)<heap.size()&&heap[ri(i)]<heap[min])
+				min=ri(i);
+			if(min==i)
+				break;
+			else
+			{
+				swap(heap[i],heap[min]);
+				i=min;				
+			}				
+		}
+	}	
+	void build()
+	{
+		for(int i=(heap.size())/2;i>=0;i--)
+			heapify(i);
+	}	
+	int getmin()
+	{
+		if(heap.size()==0)
+			return INF;
+		int x=heap[0];
+		heap[0]=heap[heap.size()-1];
+		heap.pop_back();
+		heapify(0);		
+		return x;
+	}
+};
+int main()
+{
+	int t;
+	t=rd;
+	minheap m;
+	for(int i=0;i<t;i++)
+	{
+		int k=rd;
+		m.ins(k);
+	}	
+	m.build();
+	for(int i=0;i<t;i++)
+	{
+		printf("%d\n",m.getmin());
+	}
+	return 0;
+}
