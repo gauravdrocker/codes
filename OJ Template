@@ -1,15 +1,4 @@
-#include <iostream>
-#include <cstring>
-#include <string>
-#include <cstdio>
-#include <fstream>
-#include <cstdlib>
-#include <vector>
-#include <algorithm>
-#include <stack>
-#include <map>
-#include <math.h>
-#include <ctime>
+#include<bits/stdc++.h>
 
 // STL
 #define pb push_back
@@ -61,6 +50,26 @@ ll x = 1, y = a;
         b /= 2;
     }
     return x;
+}
+#define PUTCHAR putchar_unlocked
+#define wr(n) writeInt(n)
+
+inline void writeInt(long long x)
+{
+int i = 20;
+char buf[21];
+// buf[10] = 0;
+buf[20] = '\n';
+ 
+do
+{
+buf[--i] = x % 10 + '0';
+x/= 10;
+}while(x);
+do
+{
+PUTCHAR(buf[i]);
+} while (buf[i++] != '\n');
 }
 
 #define gc getchar_unlocked
